@@ -1,0 +1,47 @@
+{
+  "name": "wait-for-process",
+  "displayName": "wait-for-process",
+  "description": "Defines a command which allows you to wait for a process to be running with a specific name or which links to a specific dll, primarily designed to be used by an Attach debug configuration",
+  "publisher": "mauve",
+  "version": "0.0.6",
+  "license": "BSD-3-Clause",
+  "engines": {
+    "vscode": "^1.37.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:wait-for-process.wait"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "wait-for-process.wait",
+        "title": "Wait for process"
+      }
+    ]
+  },
+  "scripts": {
+    "build-helper": "node scripts/build-helper.js",
+    "vscode:prepublish": "yarn run build-helper && yarn run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "yarn run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.1",
+    "@types/mocha": "^5.2.6",
+    "@types/node": "^10.12.21",
+    "@types/vscode": "^1.37.0",
+    "glob": "^7.1.4",
+    "mocha": "^6.1.4",
+    "typescript": "^3.3.1",
+    "tslint": "^5.12.1",
+    "vscode-test": "^1.0.2"
+  }
+}
