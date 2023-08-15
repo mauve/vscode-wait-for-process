@@ -58,8 +58,15 @@ async function getMatchingProcesses(helperPath: string, options: { processName?:
 			return info.moduleIndex === "1";
 		}
 
+		if (options.processName && options.moduleName) {
+			if (!info.moduleName) {
+				return false;
+			}
+			return info.processName === options.processName && info.moduleName === options.moduleName;
+		}
+
 		if (options.processName) {
-			return info.processName === options.processName;
+			return info.processName === options.processName && info.moduleIndex === "1";
 		}
 
 		if (options.moduleName) {
