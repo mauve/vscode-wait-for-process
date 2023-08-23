@@ -13,7 +13,7 @@ void PrintProcessInfo(DWORD processID) {
     HMODULE hMods[1024];
     DWORD cbNeeded;
 
-    if (EnumProcessModules(hProcess, hMods, sizeof(hMods), &cbNeeded)) {
+    if (EnumProcessModulesEx(hProcess, hMods, sizeof(hMods), &cbNeeded, LIST_MODULES_ALL)) {
       TCHAR szProcessName[MAX_PATH] = TEXT("<unknown>");
       GetModuleBaseName(hProcess, hMods[0], szProcessName,
                         sizeof(szProcessName) / sizeof(TCHAR));
